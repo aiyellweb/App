@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Gesi | Software</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <title>Gesi Software</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+          <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap-select.min.css')}}">
-    <!-- Font Awesome -->
+        <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('css/AdminLTE.min.css')}}">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
+      <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
     <link rel="apple-touch-icon" href="{{asset('img/apple-touch-icon.png')}}">
     <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}">
 
-  </head>
-  <body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
 
-      <header class="main-header">
+  <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet"  href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+
+
+
+
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+
+<div class="wrapper">
+
+
+
+
+<header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>AD</b>V</span>
           <!-- logo for regular state and mobile devices -->
@@ -101,13 +109,14 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{Route('Eps-home')}}"><i class="fa fa-circle-o"></i> EPS'S</a></li>
+              <li><a href="{{Route('Eps-home')}}"><i class="fa fa-circle-o"></i> EPS'S</a></li>
                 <li><a href="{{Route('fondo-home')}}"><i class="fa fa-circle-o"></i>Fondos de pensión</a></li>
-                <li><a href="compras/proveedor"><i class="fa fa-circle-o"></i>ARL's</a></li>
-                <li><a href="compras/proveedor"><i class="fa fa-circle-o"></i>Cajas de compensación</a></li>
+                <li><a href="{{Route('Arl-home')}}"><i class="fa fa-circle-o"></i>ARL's</a></li>
+                <li><a href="{{Route('caja-home')}}"><i class="fa fa-circle-o"></i>Cajas de compensación</a></li>
               </ul>
             </li>
-               
+      
+                       
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-gear"></i> <span>Gestion Basica</span>
@@ -120,7 +129,7 @@
             </li>
              <li>
 
-              <li class="treeview">
+             <li class="treeview">
               <a href="#">
                 <i class="fa fa-gears"></i> <span>Gestion Avanzada</span>
                 <i class="fa fa-angle-left pull-right"></i>
@@ -131,8 +140,22 @@
               </ul>
             </li>
              <li>
+          
+
+               <li class="treeview">
               <a href="#">
-                <i class="fa fa-lock"></i> <span>Seguridad</span>
+                <i class="fa fa-lock"></i> <span>Gestion Avanzada</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                
+              </ul>
+            </li>
+             <li>
+
+              <a href="#">
+                <i class="fa fa-plus-square"></i> <span>Ayuda</span>
                 <small class="label pull-right bg-red">PDF</small>
               </a>
             </li>
@@ -152,8 +175,7 @@
 
 
 
-       <!--Contenido-->
-      <!-- Content Wrapper. Contains page content -->
+  <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         
         <!-- Main content -->
@@ -174,27 +196,46 @@
 
                     <div class="clearfix"></div>
                     <div class="row contenedor">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         @yield('content')
+
+
+                         <div class="panel panel-default table-responsive">
+          <div class="panel-body">
+          <div class="row">
+  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+          
+      </div>
+      </div>
+    </div>
+  </div> 
+</div>
+</div>
+
+
+
                         </div>
                     </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                  	<div class="row">
-	                  	<div class="col-md-12">
-		                          <!--Contenido-->
+                    <div class="row">
+                      <div class="col-md-12">
+                              <!--Contenido-->
                              
                               @yield('contenido')
-		                          <!--Fin Contenido-->
+
+                              <!--Fin Contenido-->
                            </div>
                           
           
 
                         </div>
-		                    
-                  		</div>
-                  	</div><!-- /.row -->
+                        
+                      </div>
+                    </div><!-- /.row -->
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col -->
@@ -202,23 +243,70 @@
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
-      <!--Fin-Contenido-->
-      <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> 1.0.1
-        </div>
-        <strong>Copyright &copy; 2016-2020 <a href="www.gmail.con">Andres Angel</a></strong> derechos reservados
-      </footer>
+    
 
-      
-    <!-- jQuery 2.1.4 -->
-   
- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript">
+  
+  $(document).ready(function(){
+    $('#eps_table').DataTable({
+
+        "language":{
+
+          "sProcessing":     "Procesando...",
+    "sLengthMenu":     "Mostrar _MENU_ registros",
+    "sZeroRecords":    "No se encontraron resultados",
+    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+    "sInfoPostFix":    "",
+    "sSearch":         "Buscar:",
+    "sUrl":            "",
+    "sInfoThousands":  ",",
+    "sLoadingRecords": "Cargando...",
+    "oPaginate": {
+        "sFirst":    "Primero",
+        "sLast":     "Último",
+        "sNext":     "Siguiente",
+        "sPrevious": "Anterior"
+    },
+    "oAria": {
+        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    }
+
+
+        }
+
+  
+
+    });
+
+
+});
+
+</script>
+ 
     <!-- Bootstrap 3.3.5 -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
      <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('js/app.min.js')}}"></script>
-    
-  </body>
+
+</body>
 </html>

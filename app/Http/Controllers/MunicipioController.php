@@ -5,15 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\CajaComp;
-use Session;
-use Redirect;
-use Illuminate\Routing\Route;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Input;
-use DB;
+use App\Municipio;
+use App\Departamento;
 
-class CajaCompensacionController extends Controller
+class MunicipioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,9 +17,7 @@ class CajaCompensacionController extends Controller
      */
     public function index()
     {
-        $caja = CajaComp::where('estado_caja','=','Activo')->get();
-
-        return view('cajacompensacion.index',compact('caja'));
+        return view('municipio.index');
     }
 
     /**
@@ -34,9 +27,9 @@ class CajaCompensacionController extends Controller
      */
     public function create()
     {
-     
-     return view('cajacompensacion.create');   
+        $departamento= Departamento::orderBy('nombre','desc')->lists('nombre','id');
 
+        return view('municipio.create',['departamento'=>$departamento]);
     }
 
     /**
@@ -47,9 +40,7 @@ class CajaCompensacionController extends Controller
      */
     public function store(Request $request)
     {
-        $caja = new CajaComp($request->all());
-        $caja->save();
-        return Redirect::to('/cajacompensacion');
+        //
     }
 
     /**
@@ -69,17 +60,6 @@ class CajaCompensacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-
-     public function modaledit($id)
-    {
-        $caja= CajaComp::find($id);
-        return view('cajacompensacion.modaledit')->with('caja',$caja);
-
-    }
-
-
-
     public function edit($id)
     {
         //
@@ -94,11 +74,7 @@ class CajaCompensacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-            $caja= CajaComp::find($id);
-            $caja->fill($request->all());
-            $caja->save();
-            Session::flash('message','caja creada');
-            return Redirect::to('/cajacompensacion');
+        //
     }
 
     /**
@@ -109,9 +85,6 @@ class CajaCompensacionController extends Controller
      */
     public function destroy($id)
     {
-        $caja::find($id);
-        $caja->estado_caja="Inactivo";
-        $caja->update();
-        return Redirect::to('/cajacompensacion');
+        //
     }
 }

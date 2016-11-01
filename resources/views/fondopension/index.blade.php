@@ -109,10 +109,10 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{Route('Eps-home')}}"><i class="fa fa-circle-o"></i> EPS'S</a></li>
+               <li><a href="{{Route('Eps-home')}}"><i class="fa fa-circle-o"></i> EPS'S</a></li>
                 <li><a href="{{Route('fondo-home')}}"><i class="fa fa-circle-o"></i>Fondos de pensión</a></li>
-                <li><a href="compras/proveedor"><i class="fa fa-circle-o"></i>ARL's</a></li>
-                <li><a href="compras/proveedor"><i class="fa fa-circle-o"></i>Cajas de compensación</a></li>
+                <li><a href="{{Route('Arl-home')}}"><i class="fa fa-circle-o"></i>ARL's</a></li>
+                <li><a href="{{Route('caja-home')}}"><i class="fa fa-circle-o"></i>Cajas de compensación</a></li>
               </ul>
             </li>
       

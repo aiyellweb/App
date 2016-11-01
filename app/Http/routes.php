@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index');
 /////////////////////RUTAS ADMNISTRACION APLICATIVO///////////////////////////
 
 /*----------------------------------------------------------------- */						
-/////////////////RUTAS ENLACES///////////////////////
+/////////////////RUTAS ENLACES home Seguridad Social///////////////////////
 
 Route::get('inicio',[
 		'as'=>'inicio-home',
@@ -39,6 +39,19 @@ Route::get('Eps',[
 
 	]);
 
+Route::get('Arl',[
+	'as'=>'Arl-home',
+	'uses'=>'ArlController@index'
+
+	]);
+
+
+Route::get('CajadeCompesacion',[
+	'as'=>'caja-home',
+	'uses'=>'CajaCompensacionController@index'
+
+	]);
+
 
 Route::get('Fondo',[
 		'as'=>'fondo-home',
@@ -46,7 +59,28 @@ Route::get('Fondo',[
 
 	]);
 
-//////////////////////FIN RUTAS ENLACES////////////////////////////	
+//////////////////////FIN RUTAS ENLACES home Seguridad social////////////////////////////	
+
+//////////////////RUTAS ENLACES HOME GESTIOS BASICA////////////////////////
+
+Route::get('municipios',[
+
+	'as'=>'municipio-home',
+	'uses'=>'MunicipioController@index'
+
+	]);
+
+
+
+
+
+
+
+
+/////////////////////////FIN RUTAS HOME GESTION BASICA/////////////////77
+
+
+
 /*----------------------------------------------------------------- */
 
 ///////////////////////////Rutas de tipo  Rest/////////////////////////////
@@ -60,9 +94,11 @@ Route::resource('arl','ArlController');
 
 Route::resource('cajacompensacion','CajaCompensacionController');
 
+Route::resource('municipio','MunicipioController');
 
 
-///////////////////////////////FIN RUTAS APLICATIVO/////////////////////////////////////////////////
+
+///////////////////////////////FIN RUTAS  TIPO REST/////////////////////////////////////////////////
 
 
 
