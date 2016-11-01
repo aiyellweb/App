@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Municipio;
 use App\Departamento;
+use Session;
+use Redirect;
+use Illuminate\Routing\Route;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Input;
+use DB;
+
 
 class MunicipioController extends Controller
 {
@@ -40,7 +47,12 @@ class MunicipioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $municipio=  new Municipio($request->all());
+       // $municipio->save();
+        dd($municipio);
+
+        //return Redirec::to('/municipio');
+
     }
 
     /**

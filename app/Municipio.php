@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Municipio extends Model
 {
     protected $table='municipios';
-    protected $fillable=['nombre','departamento_id']
+    protected $fillable=['nombre','departamento_id'];
 
 
 
 
-   public function departamentos(){
+     function departamentos() {
 
    		return $this->belongsTo('App\Departamento','departamento_id');
    }
