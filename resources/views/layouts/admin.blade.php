@@ -123,8 +123,11 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                
+                <li><a href="{{Route('municipio-home')}}"><i class="fa fa-circle-o"></i>Municipios</a></li>
+                <li><a href="{{Route('banco-detail')}}"><i class="fa fa-circle-o"></i>Bancos</a></li>
+                <li><a href="{{Route('cuenta-bancarias')}}"><i class="fa fa-circle-o"></i>Cuentas bancarias</a></li>
+                <li><a href="{{Route('parentesco-home')}}"><i class="fa fa-circle-o"></i>Parentescos</a></li>
+                  <li><a href="{{Route('tipo-contratista-home')}}"><i class="fa fa-circle-o"></i>Tipo De contratistas</a></li>            
               </ul>
             </li>
              <li>

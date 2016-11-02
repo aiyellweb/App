@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Municipio;
-use App\Departamento;
 use Session;
+use App\TipoContratista;
 use Redirect;
 use Illuminate\Routing\Route;
 use Maatwebsite\Excel\Facades\Excel;
@@ -15,9 +14,11 @@ use Illuminate\Support\Facades\Input;
 use DB;
 
 
-class MunicipioController extends Controller
+class TipoContratistaController extends Controller
 {
-    /**
+    
+
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -25,12 +26,10 @@ class MunicipioController extends Controller
     public function index()
     {
 
-        $municipio = Municipio::orderBy('id','desc')->get();
-        $municipio->each(function($municipio){
-        $municipio->departamentos;
+        $contratista = TipoContratista::orderBy('id','desc')->get();
 
-        });
-        return view('municipio.index',compact('municipio'));
+
+        return view('tipocontratistas.index',compact('contratista'));
     }
 
     /**
@@ -40,9 +39,9 @@ class MunicipioController extends Controller
      */
     public function create()
     {
-        $departamento= Departamento::orderBy('nombre','desc')->lists('nombre','id');
+        
 
-        return view('municipio.create',['departamento'=>$departamento]);
+        return view('tipocontratistas.create');
     }
 
     /**
@@ -53,9 +52,9 @@ class MunicipioController extends Controller
      */
     public function store(Request $request)
     {
-        $municipio =  new Municipio($request->all());
-        $municipio->save();
-       return Redirect::to('/municipio');
+        $contratista =  new TipoContratista($request->all());
+        $contratista->save();
+       return Redirect::to('/tipocontratistas');
         
 
     }
@@ -79,9 +78,8 @@ class MunicipioController extends Controller
      */
     public function edit($id)
     {
-        $municipio= Municipio::find($id);
-        $departamento = Departamento::orderBy('nombre','desc')->lists('nombre','id');
-        return view('municipio.edit',compact('municipio','departamento'));
+        $contratista= TipoContratista::find($id);
+        return view('tipocontratistas.edit',compact('contratista','departamento'));
     }
 
     /**
@@ -95,19 +93,13 @@ class MunicipioController extends Controller
 
 
 
-  
-
-
-
-
-
 
     public function update(Request $request, $id)
     {
-        $municipio = Municipio::find($id);
-        $municipio->fill($request->all());
-        $municipio->save();
-        return Redirect::to('/municipio');
+        $contratista = TipoContratista::find($id);
+        $contratista->fill($request->all());
+        $contratista->save();
+        return Redirect::to('/tipocontratistas');
     }
 
     /**
@@ -118,10 +110,12 @@ class MunicipioController extends Controller
      */
     public function destroy($id)
     {
-        $municipio= Municipio::find($id);
-        $municipio->save();
+        $contratista= TipoContratista::find($id);
+        $contratista->save();
         
     }
 
-    
+
+
+
 }

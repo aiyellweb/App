@@ -5,19 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Municipio;
-use App\Departamento;
 use Session;
+use App\Parentesco;
 use Redirect;
 use Illuminate\Routing\Route;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Input;
 use DB;
 
-
-class MunicipioController extends Controller
+class ParetescoController extends Controller
 {
-    /**
+ 
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -25,12 +24,11 @@ class MunicipioController extends Controller
     public function index()
     {
 
-        $municipio = Municipio::orderBy('id','desc')->get();
-        $municipio->each(function($municipio){
-        $municipio->departamentos;
+        $paren = Parentesco::all();
+        
 
-        });
-        return view('municipio.index',compact('municipio'));
+        
+        return view('parentescos.index',compact('paren'));
     }
 
     /**
@@ -40,9 +38,9 @@ class MunicipioController extends Controller
      */
     public function create()
     {
-        $departamento= Departamento::orderBy('nombre','desc')->lists('nombre','id');
+       
 
-        return view('municipio.create',['departamento'=>$departamento]);
+        return view('parentescos.create');
     }
 
     /**
@@ -53,9 +51,10 @@ class MunicipioController extends Controller
      */
     public function store(Request $request)
     {
-        $municipio =  new Municipio($request->all());
-        $municipio->save();
-       return Redirect::to('/municipio');
+        $paren =  new Parentesco($request->all());
+        //dd($paren);
+        $paren->save();
+       return Redirect::to('/parentescos');
         
 
     }
@@ -79,9 +78,9 @@ class MunicipioController extends Controller
      */
     public function edit($id)
     {
-        $municipio= Municipio::find($id);
-        $departamento = Departamento::orderBy('nombre','desc')->lists('nombre','id');
-        return view('municipio.edit',compact('municipio','departamento'));
+        $paren= Parentesco::find($id);
+      
+        return view('parentescos.edit',compact('paren'));
     }
 
     /**
@@ -104,10 +103,10 @@ class MunicipioController extends Controller
 
     public function update(Request $request, $id)
     {
-        $municipio = Municipio::find($id);
-        $municipio->fill($request->all());
-        $municipio->save();
-        return Redirect::to('/municipio');
+        $paren = Parentesco::find($id);
+        $paren->fill($request->all());
+        $paren->save();
+        return Redirect::to('/parentescos');
     }
 
     /**
@@ -118,10 +117,13 @@ class MunicipioController extends Controller
      */
     public function destroy($id)
     {
-        $municipio= Municipio::find($id);
-        $municipio->save();
+        $paren= Parentesco::find($id);
+        $paren->save();
         
     }
 
-    
+
+
+
+
 }
