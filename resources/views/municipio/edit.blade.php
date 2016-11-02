@@ -17,7 +17,7 @@
 
 <div class="box box-primary col-xs-12">
 
-	{!!Form::open(['route'=>'municipio.store', 'method'=>'POST'])!!}
+{!!Form::model($municipio,['route'=>['municipio.update',$municipio],'method'=>'PUT'])!!}
 
 <br>
 
@@ -25,7 +25,7 @@
 
 <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}" >
 	{!!form::label('nombre',' Nombre Municipio:')  !!}
-	{!!form::text('nombre',null,['class'=>'form-control','placeholder'=>'digite nombre','required'])!!}
+	{!!form::text('nombre',$municipio->nombre,null,['class'=>'form-control','placeholder'=>'digite nombre','required'])!!}
 
 	 @if ($errors->has('nombre'))
                 <span class="help-block">

@@ -1,6 +1,6 @@
 <div class="modal fade modal-slide-in-right" aria-hidden="true"
-role="dialog" tabindex="-1" id="modal-edit-{{$epss->id}}">
-	{{Form::Open(array('action'=>array('EpsController@update',$epss->id),'method'=>'PUT'))}}
+role="dialog" tabindex="-1" id="modal-edit-{{$municipios->id}}">
+	{{Form::Open(array('action'=>array('MunicipioController@update',$municipios->id),'method'=>'PUT'))}}
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -13,22 +13,18 @@ role="dialog" tabindex="-1" id="modal-edit-{{$epss->id}}">
 			<div class="modal-body">
 				<div class="box box-primary col-xs-12">
 	
-				<p>Confirme si desea Modificar la Eps <span><strong>{{$epss->codigo_eps}}</strong></span></p>
+				<p>Confirme si desea Modificar la Eps <span><strong>{{$municipios->id}}</strong></span></p>
 				
 
 			<br>	
 
 			 <div class="form-group">
             	<label for="nit_eps">Nit Eps</label>
-            	<input type="text" name="nit_eps" class="form-control" value="{{$epss->nit_eps}}" placeholder="Nit eps">
+            	<input type="text" name="nit_eps" class="form-control" value="{{$municipios->nombre}}" placeholder="Nit eps">
             </div>
 
 
-            <div class="form-group">
-            	<label for="descripcion_eps">Descripcion Eps</label>
-            	<input type="text" name="descripcion_eps" class="form-control" value="{{$epss->descripcion_eps}}" placeholder="descripcion">
-            	
-            </div>
+           
 
 			</div>
 			<div class="modal-footer">

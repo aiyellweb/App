@@ -1,6 +1,6 @@
 <div class="modal fade modal-slide-in-right" aria-hidden="true"
-role="dialog" tabindex="-1" id="modal-delete-{{$municipios->id}}">
-	{{Form::Open(array('action'=>array('MunicipioController@destroy',$municipios->id),'method'=>'delete'))}}
+role="dialog" tabindex="-1" id="modal-delete-{{$cuentas->id}}">
+	{{Form::Open(array('action'=>array('CuentaBancariasController@destroy',$cuentas->id),'method'=>'delete'))}}
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -11,8 +11,8 @@ role="dialog" tabindex="-1" id="modal-delete-{{$municipios->id}}">
                 <h4 class="modal-title">Cancelar Accion</h4>
 			</div>
 			<div class="modal-body">
-				<p>Confirme si desea Eliminar este Municipio</p>
-				<span>{{$municipios->id}}</span>
+				<p>Confirme si desea Eliminar este Cuenta</p>
+				<span>{{$cuentas->id}}</span>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

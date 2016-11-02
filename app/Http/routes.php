@@ -72,8 +72,19 @@ Route::get('municipios',[
 
 
 
+Route::get('bascos',[
+	'as'=>'banco-detail',
+	'uses'=>'BancoController@index'
 
 
+	]);
+
+
+Route::get('cuentas_bancarias',[
+		'as'=>'cuenta-bancarias',
+		'uses'=>'CuentaBancariasController@index'
+
+	]);
 
 
 
@@ -95,6 +106,9 @@ Route::resource('arl','ArlController');
 Route::resource('cajacompensacion','CajaCompensacionController');
 
 Route::resource('municipio','MunicipioController');
+
+Route::resource('banco','BancoController');
+Route::resource('cuentaBancarias','CuentaBancariasController');
 
 
 

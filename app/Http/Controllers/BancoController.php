@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Municipio;
-use App\Departamento;
+use App\Banco;
 use Session;
 use Redirect;
 use Illuminate\Routing\Route;
@@ -14,8 +13,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Input;
 use DB;
 
-
-class MunicipioController extends Controller
+class BancoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,13 +22,8 @@ class MunicipioController extends Controller
      */
     public function index()
     {
-
-        $municipio = Municipio::orderBy('id','desc')->get();
-        $municipio->each(function($municipio){
-        $municipio->departamentos;
-
-        });
-        return view('municipio.index',compact('municipio'));
+        $banco = Banco::all();
+            return view('banco.index',compact('banco'));
     }
 
     /**
@@ -40,9 +33,7 @@ class MunicipioController extends Controller
      */
     public function create()
     {
-        $departamento= Departamento::orderBy('nombre','desc')->lists('nombre','id');
-
-        return view('municipio.create',['departamento'=>$departamento]);
+        return view('banco.create');
     }
 
     /**
@@ -53,10 +44,9 @@ class MunicipioController extends Controller
      */
     public function store(Request $request)
     {
-        $municipio =  new Municipio($request->all());
-        $municipio->save();
-       return Redirect::to('/municipio');
-        
+        $banco = new Banco($request->all());
+        $banco->save();
+        return Redirec::to('/banco');
 
     }
 
@@ -79,9 +69,8 @@ class MunicipioController extends Controller
      */
     public function edit($id)
     {
-        $municipio= Municipio::find($id);
-        $departamento = Departamento::orderBy('nombre','desc')->lists('nombre','id');
-        return view('municipio.edit',compact('municipio','departamento'));
+     $banco = Banco::find($id);
+        return view('banco.edit',compact('banco'));
     }
 
     /**
@@ -91,23 +80,13 @@ class MunicipioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-
-
-
-  
-
-
-
-
-
-
     public function update(Request $request, $id)
     {
-        $municipio = Municipio::find($id);
-        $municipio->fill($request->all());
-        $municipio->save();
-        return Redirect::to('/municipio');
+        $banco = Banco::find($id);
+        $banco->fill($request->all());
+        $banco->save();
+        return Redirect::to('/banco');
+
     }
 
     /**
@@ -118,8 +97,8 @@ class MunicipioController extends Controller
      */
     public function destroy($id)
     {
-        $municipio= Municipio::find($id);
-        $municipio->save();
-        
+        $banco = Banco::find($id);
+        $banco->delete();
+        return Redirect::to('/banco');
     }
 }

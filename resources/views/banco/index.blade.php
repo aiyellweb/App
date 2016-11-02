@@ -8,9 +8,9 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-          <h3>Listado Municipios <a href="{{route('eps.create')}}"><button class="btn btn-success" role="button">Nuevo</button></a></h3>
+          <h3>Listado bancos <a href="{{route('eps.create')}}"><button class="btn btn-success" role="button">Nuevo</button></a></h3>
 
-         <a href="{{route('eps-reporte')}}"><button class="btn btn-info" role="button">Reporte Municipio</button></a>
+         <a href="{{route('eps-reporte')}}"><button class="btn btn-info" role="button">Reporte Bancos</button></a>
 
     </div>
   </div>
@@ -26,37 +26,33 @@
           <thead>
             <tr>
               <th>CÓDIGO</th>
-              <th>Nombre Municipio</th>
-              <th>departamento</th>
+              <th>Descripcion banco</th>
               <th>EDITAR</th>
               <th>ELIMINAR</th>
             </tr>
           </thead>
           <tbody>
-            @foreach($municipio as $municipios)
+            @foreach($banco as $bancos)
               <tr>
                 <td>
-                  {{$municipios->id}}
+                  {{$bancos->codigo}}
                 </td>
                 <td>
-                  {{$municipios->nombre}}
+                  {{ strtoupper($bancos->descripcion) }}
                 </td>
                 <td>
-                  {{ strtoupper($municipios->departamentos->nombre) }}
-                </td>
-                <td>
-                  <a href="{{route('municipio.edit',$municipios->id)}}"><button class="glyphicon glyphicon-edit"> <span class=""></span></button></a>
+                  <a href="{{route('banco.edit',$bancos->id)}}"><button class="glyphicon glyphicon-edit"> <span class=""></span></button></a>
                    
                   </a>
                 </td>
                 <td>
-                  <a href="" data-target="#modal-delete-{{$municipios->id}}" data-toggle="modal"><button class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></button></a>
+                  <a href="" data-target="#modal-delete-{{$bancos->id}}" data-toggle="modal"><button class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></button></a>
                    
                   </a>
                 </td>
               </tr>
              
-          @include('municipio.modal')
+          @include('banco.modal')
 
 
             @endforeach 

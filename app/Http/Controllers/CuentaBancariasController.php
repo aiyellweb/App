@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Municipio;
-use App\Departamento;
+use App\Cuenta_bancarias;
+use App\Banco;
 use Session;
 use Redirect;
 use Illuminate\Routing\Route;
@@ -14,8 +14,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Input;
 use DB;
 
-
-class MunicipioController extends Controller
+class CuentaBancariasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,13 +23,13 @@ class MunicipioController extends Controller
      */
     public function index()
     {
-
-        $municipio = Municipio::orderBy('id','desc')->get();
-        $municipio->each(function($municipio){
-        $municipio->departamentos;
+        $cuenta= Cuenta_bancarias::all();
+        $cuenta->each(function($cuenta){
+                $cuenta->Banco;
 
         });
-        return view('municipio.index',compact('municipio'));
+
+       return view('cuentaBancarias.index',compact('cuenta'));
     }
 
     /**
@@ -40,9 +39,9 @@ class MunicipioController extends Controller
      */
     public function create()
     {
-        $departamento= Departamento::orderBy('nombre','desc')->lists('nombre','id');
-
-        return view('municipio.create',['departamento'=>$departamento]);
+            
+        $banco = Banco::orderBy('descripcion','desc')->lists('descripcion','id');
+           return view('cuentaBancarias.create',compact('banco'));
     }
 
     /**
@@ -53,11 +52,7 @@ class MunicipioController extends Controller
      */
     public function store(Request $request)
     {
-        $municipio =  new Municipio($request->all());
-        $municipio->save();
-       return Redirect::to('/municipio');
-        
-
+    
     }
 
     /**
@@ -79,9 +74,9 @@ class MunicipioController extends Controller
      */
     public function edit($id)
     {
-        $municipio= Municipio::find($id);
-        $departamento = Departamento::orderBy('nombre','desc')->lists('nombre','id');
-        return view('municipio.edit',compact('municipio','departamento'));
+           $cuenta = Cuenta_bancarias::find($id);         
+          $banco = Banco::orderBy('descripcion','desc')->lists('descripcion','id');
+           return view('cuentaBancarias.edit',compact('cuenta','banco'));
     }
 
     /**
@@ -91,23 +86,11 @@ class MunicipioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-
-
-
-  
-
-
-
-
-
-
     public function update(Request $request, $id)
     {
-        $municipio = Municipio::find($id);
-        $municipio->fill($request->all());
-        $municipio->save();
-        return Redirect::to('/municipio');
+        $cuenta = new Cuenta_bancarias($request->all());
+        $cuenta->save();
+        return Redirect::to('/cuentaBancarias');
     }
 
     /**
@@ -118,8 +101,8 @@ class MunicipioController extends Controller
      */
     public function destroy($id)
     {
-        $municipio= Municipio::find($id);
-        $municipio->save();
-        
+        $cuenta= Cuenta_bancarias::find($id);
+        $cuenta->tipo_cuenta= "C";
+        $cuenta->update();
     }
 }
