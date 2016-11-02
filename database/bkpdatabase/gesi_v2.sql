@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-11-2016 a las 04:05:17
+-- Tiempo de generación: 02-11-2016 a las 17:32:56
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.6.15
 
@@ -57,6 +57,27 @@ INSERT INTO `arl` (`id`, `codigo`, `descripcion`, `nit`, `estado`, `fecha_estado
 (13, '14-7', 'CIA. DE SEGUROS BOLIVAR S.A.', '8600025032', 'Activo', '2016-10-19 00:00:00', '2016-10-19 05:00:00', NULL),
 (14, '14-8', 'COMPAÑIA DE SEGUROS DE VIDA AURORA', '8600221375', 'Activo', '2016-10-19 00:00:00', '2016-10-19 05:00:00', NULL),
 (15, '25-10', 'LA PREVISORA VIDA S.A. COMPAÑIA DE SEGUROS (ISS)', '860013816', 'Activo', '2016-10-19 00:00:00', '2016-10-19 05:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `banco`
+--
+
+CREATE TABLE `banco` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `codigo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `banco`
+--
+
+INSERT INTO `banco` (`id`, `codigo`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, '7', 'BANCOLOMBIA ', '2016-11-02 09:21:09', '2016-11-02 09:27:30');
 
 -- --------------------------------------------------------
 
@@ -136,6 +157,28 @@ INSERT INTO `caja_compensacion` (`id`, `codigo_caja`, `descripcion_caja`, `nit_c
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `cuenta_bancarias`
+--
+
+CREATE TABLE `cuenta_bancarias` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `codigo_banco` int(10) UNSIGNED NOT NULL,
+  `numero_cuenta` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tipo_cuenta` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `cuenta_bancarias`
+--
+
+INSERT INTO `cuenta_bancarias` (`id`, `codigo_banco`, `numero_cuenta`, `tipo_cuenta`, `created_at`, `updated_at`) VALUES
+(1, 1, '123456789', 'A', '2016-11-02 05:00:00', '2016-11-02 05:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `departamentos`
 --
 
@@ -196,7 +239,7 @@ CREATE TABLE `eps` (
 
 INSERT INTO `eps` (`id`, `user_id`, `codigo_eps`, `descripcion_eps`, `nit_eps`, `estado_eps`, `created_at`, `updated_at`) VALUES
 (1, 1, 'EPS001', 'COLMEDICA ENTIDAD PROMOTORA DE SALUD S.A.', '8301138310', 'Inactivo', '2016-08-29 05:00:00', '2016-10-17 20:09:42'),
-(2, 1, 'EPS002', 'SALUD TOTAL S.A. EPS ARS', '8001309074', 'Activo', '2016-08-29 05:00:00', '2016-10-18 20:35:37'),
+(2, 1, 'EPS002', 'SALUD TOTAL S.A. EPS ARS', '8001309074', 'Activo', '2016-08-29 05:00:00', '2016-11-01 09:39:41'),
 (3, 1, 'EPS003', 'CAFESALUD EPS', '8001409496', 'Activo', '2016-08-29 05:00:00', NULL),
 (4, 1, 'EPS005', 'E.P.S. SANITAS S.A.', '8002514406', 'Activo', '2016-08-29 05:00:00', NULL),
 (5, 1, 'EPS006', 'INSTITUTO DE SEGUROS SOCIALES', '8600138161', 'Activo', '2016-08-29 05:00:00', NULL),
@@ -280,7 +323,11 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_10_15_172121_create_eps_table', 4),
 ('2016_10_18_200448_create_fondo_pensiones_table', 5),
 ('2016_10_19_155908_add_arl_table', 6),
-('2016_10_20_184822_add_caja_compensacion_table', 7);
+('2016_10_20_184822_add_caja_compensacion_table', 7),
+('2016_11_02_035422_add_banco_table', 8),
+('2016_11_02_043023_add_cuenta_bancarias_table', 9),
+('2016_11_02_144132_add_parentescos_table', 10),
+('2016_11_02_153215_add_tipo_contratista_table', 11);
 
 -- --------------------------------------------------------
 
@@ -301,7 +348,30 @@ CREATE TABLE `municipios` (
 --
 
 INSERT INTO `municipios` (`id`, `nombre`, `departamento_id`, `created_at`, `updated_at`) VALUES
-(1, 'Cali', 1, '2016-10-13 14:15:00', NULL);
+(1, 'Cali', 1, '2016-10-13 14:15:00', NULL),
+(2, 'rodanillo', 1, '2016-11-01 08:59:42', '2016-11-01 08:59:42'),
+(3, 'Jamundi', 1, '2016-11-01 09:00:32', '2016-11-02 05:06:58');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `parentescos`
+--
+
+CREATE TABLE `parentescos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `codigo_parentesco` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion_parentesco` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `parentescos`
+--
+
+INSERT INTO `parentescos` (`id`, `codigo_parentesco`, `descripcion_parentesco`, `created_at`, `updated_at`) VALUES
+(1, '01', 'descrprueba', '2016-11-02 20:08:38', '2016-11-02 20:08:38');
 
 -- --------------------------------------------------------
 
@@ -339,6 +409,20 @@ INSERT INTO `roles` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipo_contratista`
+--
+
+CREATE TABLE `tipo_contratista` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `codigo_tipo_contratista` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -361,7 +445,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `rol_id`, `documento_id`, `numero_doc`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Verlaine Jaramillo', 1, 1, '', 'admin@hotmail.com', '$2y$10$EATDjnB6OGNAedtkbyKFvuAvGVwadl5Yg76waJCqyNBOle6drAsm6', 'RHP8VDfZRYOx0CQWaFwrp8WMx38vmDNBkRzLlruiIXxyUkIRw1MUuMxdHIiV', '2016-10-13 20:39:15', '2016-10-19 06:00:15', NULL),
+(1, 'Verlaine Jaramillo', 1, 1, '', 'admin@hotmail.com', '$2y$10$EATDjnB6OGNAedtkbyKFvuAvGVwadl5Yg76waJCqyNBOle6drAsm6', 'NLofnfYbRMc7BrvScBqZJQhrPhYNiIDrh3Vzi9ivkf1ZKcb6ciAffrAUkws6', '2016-10-13 20:39:15', '2016-11-02 21:25:38', NULL),
 (2, 'Adiela de Lombana', 2, 1, '890331426', 'amvalencia@adl.co', '12345678', NULL, '2016-10-14 02:54:16', '2016-10-14 02:54:16', NULL),
 (3, 'Andres', 1, 1, '1144139561', 'aiyell@hotmail.com', '$2y$10$ObpBBkgBsFeEQEbQUiNgnecx.nW0RQ9b1wkeiqbEW5d7S1PcUGL.W', NULL, '2016-10-14 02:57:34', '2016-10-14 02:57:34', NULL);
 
@@ -378,10 +462,25 @@ ALTER TABLE `arl`
   ADD UNIQUE KEY `arl_nit_unique` (`nit`);
 
 --
+-- Indices de la tabla `banco`
+--
+ALTER TABLE `banco`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `banco_codigo_unique` (`codigo`);
+
+--
 -- Indices de la tabla `caja_compensacion`
 --
 ALTER TABLE `caja_compensacion`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `cuenta_bancarias`
+--
+ALTER TABLE `cuenta_bancarias`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cuenta_bancarias_numero_cuenta_unique` (`numero_cuenta`),
+  ADD KEY `cuenta_bancarias_codigo_banco_foreign` (`codigo_banco`);
 
 --
 -- Indices de la tabla `departamentos`
@@ -418,6 +517,13 @@ ALTER TABLE `municipios`
   ADD KEY `municipios_departamento_id_foreign` (`departamento_id`);
 
 --
+-- Indices de la tabla `parentescos`
+--
+ALTER TABLE `parentescos`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `parentescos_codigo_parentesco_unique` (`codigo_parentesco`);
+
+--
 -- Indices de la tabla `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -429,6 +535,13 @@ ALTER TABLE `password_resets`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tipo_contratista`
+--
+ALTER TABLE `tipo_contratista`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tipo_contratista_codigo_tipo_contratista_unique` (`codigo_tipo_contratista`);
 
 --
 -- Indices de la tabla `users`
@@ -449,10 +562,20 @@ ALTER TABLE `users`
 ALTER TABLE `arl`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
+-- AUTO_INCREMENT de la tabla `banco`
+--
+ALTER TABLE `banco`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT de la tabla `caja_compensacion`
 --
 ALTER TABLE `caja_compensacion`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+--
+-- AUTO_INCREMENT de la tabla `cuenta_bancarias`
+--
+ALTER TABLE `cuenta_bancarias`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `departamentos`
 --
@@ -477,12 +600,22 @@ ALTER TABLE `fondo_pensiones`
 -- AUTO_INCREMENT de la tabla `municipios`
 --
 ALTER TABLE `municipios`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de la tabla `parentescos`
+--
+ALTER TABLE `parentescos`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `tipo_contratista`
+--
+ALTER TABLE `tipo_contratista`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
@@ -491,6 +624,12 @@ ALTER TABLE `users`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `cuenta_bancarias`
+--
+ALTER TABLE `cuenta_bancarias`
+  ADD CONSTRAINT `cuenta_bancarias_codigo_banco_foreign` FOREIGN KEY (`codigo_banco`) REFERENCES `banco` (`id`);
 
 --
 -- Filtros para la tabla `municipios`
