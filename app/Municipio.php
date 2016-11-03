@@ -18,4 +18,10 @@ class Municipio extends Model
    }
 
 
+    public function Contratista(){
+     	return $this->hasMany('App\Contratista');
+     }
+
+
+
 }

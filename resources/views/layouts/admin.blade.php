@@ -243,6 +243,15 @@
               </div><!-- /.box -->
             </div><!-- /.col -->
           </div><!-- /.row -->
+  
+              <div class="top_nav">  
+             <div class="clearfix"></div>
+                    <div class="row contenedor">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                        @yield('content1')
+                        </div>
+                    </div>
+                </div>
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->

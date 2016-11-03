@@ -96,14 +96,18 @@ Route::get('parentescos_',[
 Route::get('tipocontra_',[
 
  	'as'=> 'tipo-contratista-home',
-	 'uses'=>'TipoContratistaController@index'
+	 'uses'=>'ContratistaTipoController@index'
 
 	]);
 
 
 /////////////////////////FIN RUTAS HOME GESTION BASICA/////////////////77
 
+/////////////////////////RUTAS HOME GESTION AVANZADA/////////////////////////////
 
+
+
+///////////////////////FIN RUTAS GESTION AVANZADAS/////////////////////////////
 
 /*----------------------------------------------------------------- */
 
@@ -125,6 +129,14 @@ Route::resource('cuentaBancarias','CuentaBancariasController');
 
 Route::resource('parentescos','ParetescoController');
 Route::resource('tipocontratistas','TipoContratistaController');
+
+Route::resource('bueno','ContratistaTipoController');
+
+
+
+
+
+
 
 
 

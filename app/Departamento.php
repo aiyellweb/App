@@ -16,4 +16,8 @@ class Departamento extends Model
     	return $this->hasMany('App\Municipio');
 
     }
+
+     public function Contratista(){
+     	return $this->hasMany('App\Contratista');
+     }
 }
