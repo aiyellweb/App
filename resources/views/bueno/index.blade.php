@@ -55,7 +55,7 @@
                 </td>
                
                 <td>
-                  <a href="contratista/{{$contratistas->archivo_documento}}" download="Reporte2Mayo2010">
+                  <a href="contratista/archivos/{{$contratistas->archivo_documento}}" download="contratista/archivos/{{$contratistas->archivo_documento}}">
                   Descargar Archivo
                   </a>
                 </td>
